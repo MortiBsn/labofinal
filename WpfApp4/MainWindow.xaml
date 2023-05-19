@@ -87,7 +87,7 @@
                         <TextBox x:Name="AjouterImage" Grid.Column="0" Grid.Row="2" Background="#00FF93 " Visibility="Collapsed" Text="{Binding CurrentAnime.Image, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
                         <TextBox x:Name="Note" Grid.Column="0" Grid.Row="3" Background="#00FF93 " Visibility="Collapsed" Text="{Binding CurrentAnime.Cote, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
                         <TextBox x:Name="Bool" Grid.Column="1" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" Text="{Binding CurrentAnime.EnCours, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                        <ComboBox Name="ecrivain" Grid.Column="1" Grid.Row="1" Background="#00BDFF " Visibility="Visible" ItemsSource="{Binding ListEcrivain}">
+                        <ComboBox Name="ecrivain" Grid.Column="1" Grid.Row="1" Background="#00BDFF " Visibility="Visible" ItemsSource="{Binding ListEcrivain}" DisplayMemberPath="Name">
                             
                         </ComboBox>
                         
