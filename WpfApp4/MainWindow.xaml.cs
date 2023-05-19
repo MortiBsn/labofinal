@@ -157,5 +157,16 @@ namespace WpfApp4
             Serializers.SerializeBin(myData, "test.bin");
             DataContext = myData;
         }
+
+        private void EcrivainSave(object sender, RoutedEventArgs e)
+        {
+            //aller récup les infos
+
+            //string nom, prenom;
+            int age;
+            age = Int32.Parse(AgeEcri.Text);
+            Ecrivain E1= new Ecrivain(NomEcri.Text,PrenomEcri.Text,age);
+
+        }
     }
 }

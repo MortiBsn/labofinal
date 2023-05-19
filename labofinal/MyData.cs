@@ -13,6 +13,7 @@ namespace labofinal
     public class MyData : INotifyPropertyChanged
     {
         private ObservableCollection<Anime> _ListeAnime = null;
+        private ObservableCollection<Ecrivain> _ListeEcrivain = null;
         private Anime anime;
 
         public ObservableCollection<Anime> ListAnime
@@ -40,12 +41,40 @@ namespace labofinal
 
         }
 
+        public ObservableCollection<Ecrivain> ListEcrivain
+        {
+            get { return _ListeEcrivain; }
+            set {
+                if (_ListeEcrivain == value) return;
+                _ListeEcrivain = value;
+                OnPropertyChanged();
+            }
+
+        }
+
+        private Ecrivain _currentEcrivain;
+        public Ecrivain CurrentEcrivain
+        {
+            get { return _currentEcrivain; }
+            set
+            {
+                if (_currentEcrivain == value) return;
+                _currentEcrivain = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         public MyData() 
         {
+            ListEcrivain = new ObservableCollection<Ecrivain>();
             ListAnime = new ObservableCollection<Anime>();
             anime = new Anime();
-            ListAnime.Add(new Anime("Death Note", DateTime.Now, "file:///C:/Users/clicb/Desktop/2eme/Partie%202/C%23/Labo/1200px-Death_Note,_Book.svg.png", 10, false, new Ecrivain("Tsugumi", "Ōba",0), new Genre("Mystère")));
+            Ecrivain e = new Ecrivain("Tsugumi", "Ōba", 0);
+            ListAnime.Add(new Anime("Death Note", DateTime.Now, "file:///C:/Users/clicb/Desktop/2eme/Partie%202/C%23/Labo/1200px-Death_Note,_Book.svg.png", 10, false, e , new Genre("Mystère")));
+            ListEcrivain.Add(e);
+
         }
         public MyData(string name) { }
         public string Name { get; set; }
