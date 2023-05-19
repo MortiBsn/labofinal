@@ -1,10 +1,10 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
-using labofinal;
+﻿using labofinal;
+using System.Runtime.Serialization.Formatters.Binary;
 namespace CLSerializers
 {
     public class Serializers
     {
-        public static void Serialize(MyData data, String filename)
+        public static void SerializeBin(MyData data, String filename)
         {
             System.IO.Stream ms = File.OpenWrite(filename);
             BinaryFormatter formatter = new BinaryFormatter();
@@ -14,7 +14,7 @@ namespace CLSerializers
             ms.Dispose();
         }
 
-        public static MyData Deserialize(String filename)
+        public static MyData DeserializeBin(String filename)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream fs = File.Open(filename, FileMode.Open);

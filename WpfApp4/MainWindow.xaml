@@ -25,7 +25,7 @@
     <DockPanel >
 
         <Menu DockPanel.Dock="Top">
-            <MenuItem Name="menuitem" Header="_Ajouter" Click="MenuItem_Click">
+            <MenuItem Name="menuitem" Header="_Ajouter">
                 <MenuItem  Name="MenuEcrivain" Header="_Ecrivain" Click="AjouterEcrivain" IsCheckable="True" />
                 <MenuItem Name="MenuGenre" Header="_Genre" Click="AjouterGenre" IsCheckable="True" />
                 <Separator />
@@ -78,7 +78,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBox x:Name="AjouterNom" TextChanged="AjouterNom_TextChanged" Grid.Column="0" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" >Nom animé:</TextBox>
+                        <TextBox x:Name="AjouterNom" Grid.Column="0" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" >Nom animé:</TextBox>
                         <TextBox x:Name="AjouterDate" Grid.Column="0" Grid.Row="1" Background="#00BDFF " Visibility="Collapsed" >Date :</TextBox>
                         <TextBox x:Name="AjouterImage" Grid.Column="0" Grid.Row="2" Background="#00FF93 " Visibility="Collapsed" >Image :</TextBox>
                         <TextBox x:Name="Note" Grid.Column="0" Grid.Row="3" Background="#00FF93 " Visibility="Collapsed" >Note :</TextBox>
@@ -88,11 +88,11 @@
                         <TextBlock Name="comboecri" Grid.Column="2" Grid.Row="1" Background="#00BDFF " Visibility="Collapsed">Choix écrivain</TextBlock>
                         <TextBlock Name="combogenre" Grid.Column="2" Grid.Row="2" Background="#00FF93 " Visibility="Collapsed">Choix genre</TextBlock>
                         <Button x:Name="Appliquer" Style="{StaticResource GradientButtonStyle}" Grid.Column="2" Visibility="Visible" Height="46" Grid.RowSpan="2" VerticalAlignment="Top" Click="Appliquer_Click" >Appliquer</Button>
-                        <TextBox x:Name="NomEcri" TextChanged="AjouterNom_TextChanged" Grid.Column="0" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" >Nom :</TextBox>
+                        <TextBox x:Name="NomEcri" Grid.Column="0" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" >Nom :</TextBox>
                         <TextBox x:Name="PrenomEcri" Grid.Column="0" Grid.Row="1" Background="#00BDFF " Visibility="Collapsed" >Prenom :</TextBox>
                         <TextBox x:Name="AgeEcri" Grid.Column="0" Grid.Row="2" Background="#00FF93 " Visibility="Collapsed" >Age :</TextBox>
 
-                        <TextBox x:Name="NomGenre" TextChanged="AjouterNom_TextChanged" Grid.Column="0" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" >Genre :</TextBox>
+                        <TextBox x:Name="NomGenre" Grid.Column="0" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" >Genre :</TextBox>
 
                     </Grid>
 

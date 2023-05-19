@@ -90,6 +90,7 @@ namespace labofinal
 
 
     }
+    [Serializable]
     public class Genre : INotifyPropertyChanged
     {
         String _nomgenre;
@@ -135,6 +136,7 @@ namespace labofinal
 
     }
 
+    [Serializable]
     public class Ecrivain : INotifyPropertyChanged
     {
         String _nomecrivain;
