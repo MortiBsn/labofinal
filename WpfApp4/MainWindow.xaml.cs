@@ -43,10 +43,14 @@ namespace WpfApp4
         private void BoutonAjouter(object sender, RoutedEventArgs e)
         {
             AjouterNom.Visibility = Visibility.Visible;
-            AjouterDate.Visibility = Visibility.Visible;
+            AjouterNom.Text = "Nom animé";
+            
             AjouterImage.Visibility = Visibility.Visible;
+            AjouterImage.Text = "Image";
             Note.Visibility = Visibility.Visible;
+            Note.Text = "Note/20";
             Bool.Visibility = Visibility.Visible;
+            Bool.Text = "en cours (true or false)";
             ecrivain.Visibility = Visibility.Visible;
             genre.Visibility = Visibility.Visible;
             comboecri.Visibility = Visibility.Visible;
@@ -64,15 +68,25 @@ namespace WpfApp4
 
         private void Modifier_Click(object sender, RoutedEventArgs e)
         {
+            Appliquer.Visibility = Visibility.Collapsed;
+
             NomEcri.Visibility = Visibility.Collapsed;
             PrenomEcri.Visibility = Visibility.Collapsed;
             AgeEcri.Visibility = Visibility.Collapsed;
 
             AjouterNom.Visibility = Visibility.Visible;
-            AjouterDate.Visibility = Visibility.Visible;
+            AjouterNom.Text = myData.CurrentAnime.NomAnime;
+
             AjouterImage.Visibility = Visibility.Visible;
+            AjouterImage.Text = myData.CurrentAnime.Image;
+
+            
             Note.Visibility = Visibility.Visible;
+            Note.Text = myData.CurrentAnime.Cote.ToString();
+
             Bool.Visibility = Visibility.Visible;
+            Bool.Text = myData.CurrentAnime.EnCours.ToString();
+
             ecrivain.Visibility = Visibility.Visible;
             genre.Visibility = Visibility.Visible;
             comboecri.Visibility = Visibility.Visible;
@@ -85,16 +99,19 @@ namespace WpfApp4
 
             MenuGenre.IsChecked = false;
             NomGenre.Visibility = Visibility.Collapsed;
+
+
         }
 
         private void AjouterEcrivain(object sender, RoutedEventArgs e)
         {
             if (MenuEcrivain.IsChecked)
             {
-                Appliquer.Visibility = Visibility.Visible;
+                Appliquer.Visibility = Visibility.Collapsed;
+
                 MenuGenre.IsChecked = false;
                 AjouterNom.Visibility = Visibility.Collapsed;
-                AjouterDate.Visibility = Visibility.Collapsed;
+                
                 AjouterImage.Visibility = Visibility.Collapsed;
                 Note.Visibility = Visibility.Collapsed;
                 Bool.Visibility = Visibility.Collapsed;
@@ -103,7 +120,7 @@ namespace WpfApp4
                 comboecri.Visibility = Visibility.Collapsed;
                 combogenre.Visibility = Visibility.Collapsed;
 
-
+                AppliquerEcri.Visibility = Visibility.Visible;
                 NomEcri.Visibility = Visibility.Visible;
                 PrenomEcri.Visibility = Visibility.Visible;
                 AgeEcri.Visibility = Visibility.Visible;
@@ -127,7 +144,7 @@ namespace WpfApp4
                 Appliquer.Visibility = Visibility.Visible;
                 MenuEcrivain.IsChecked = false;
                 AjouterNom.Visibility = Visibility.Collapsed;
-                AjouterDate.Visibility = Visibility.Collapsed;
+                
                 AjouterImage.Visibility = Visibility.Collapsed;
                 Note.Visibility = Visibility.Collapsed;
                 Bool.Visibility = Visibility.Collapsed;
@@ -153,9 +170,25 @@ namespace WpfApp4
 
         private void Appliquer_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = null;
-            Serializers.SerializeBin(myData, "test.bin");
-            DataContext = myData;
+           
+            int note,v;
+            
+            bool b;
+            Ecrivain e1;
+            Genre g1;
+            
+            note = Int32.Parse(Note.Text);
+            b = bool.Parse(Bool.Text);
+            v = ecrivain.SelectedIndex;
+            e1 = myData.ListEcrivain[v];
+            v=genre.SelectedIndex;
+            g1 = myData.ListGenre[v];
+
+            Anime anim = new Anime(AjouterNom.Text, DateTime.Now , AjouterImage.Text, note, b,e1, g1);
+            myData.ListAnime.Add(anim);
+            //DataContext = null;
+            //Serializers.SerializeBin(myData, "test.bin");
+            //DataContext = myData;
         }
 
         private void EcrivainSave(object sender, RoutedEventArgs e)
@@ -166,7 +199,21 @@ namespace WpfApp4
             int age;
             age = Int32.Parse(AgeEcri.Text);
             Ecrivain E1= new Ecrivain(NomEcri.Text,PrenomEcri.Text,age);
+            myData.ListEcrivain.Add(E1);
 
+            //DataContext = null;
+            //Serializers.SerializeBin(myData, "test.bin");
+            //DataContext = myData;
+        }
+
+        private void Supprimer_Click(object sender, RoutedEventArgs e)
+        {
+            myData.ListAnime.Remove(myData.CurrentAnime);
+        }
+
+        private void ModifierSave_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

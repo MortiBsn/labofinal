@@ -81,11 +81,17 @@ namespace labofinal
             return "Date d'ajout  : " + DateAjout + "nomAnime : " + NomAnime + "Note/20 : " + Cote+ "Anime en cours : " + EnCours;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public String Nom()
+        {
+            return Ecrivain.NomEcrivain;
         }
 
 
@@ -169,6 +175,11 @@ namespace labofinal
             PrenomEcrivain = PRENOMECRIVAIN;
             Age= AGE;
             
+        }
+
+        public override string ToString()
+        {
+            return "Nom mangaka : " + NomEcrivain;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
