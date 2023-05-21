@@ -31,8 +31,13 @@
                 <Separator />
                 <MenuItem Header="_Exit" />
             </MenuItem>
-
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Couleur" Click="Fenetre">
+                    <MenuItem Header="_Open" />
+                </MenuItem>
+            </Menu>
         </Menu>
+        
         <Grid Name="main">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -95,11 +100,12 @@
                         
                         <Button x:Name="Appliquer" Style="{StaticResource GradientButtonStyle}" Grid.Column="2" Visibility="Collapsed" Height="46" Grid.RowSpan="2" VerticalAlignment="Top" Click="Appliquer_Click" >Appliquer</Button>
                         <Button x:Name="AppliquerEcri" Style="{StaticResource GradientButtonStyle}" Grid.Column="2" Visibility="Collapsed" Height="46" Grid.RowSpan="2" VerticalAlignment="Top" Click="EcrivainSave" >Appliquer</Button>
-                        <Button x:Name="AppliquerModif" Style="{StaticResource GradientButtonStyle}" Grid.Column="2" Visibility="Collapsed" Height="46" Grid.RowSpan="2" VerticalAlignment="Top" Click="ModifierSave_Click" >Appliquer</Button>
+                        <Button x:Name="AppliquerGenre" Style="{StaticResource GradientButtonStyle}" Grid.Column="2" Visibility="Collapsed" Height="46" Grid.RowSpan="2" VerticalAlignment="Top" Click="ModifierSave_Click" >Appliquer</Button>
+                        <Button x:Name="AppliquerModif" Style="{StaticResource GradientButtonStyle}" Grid.Column="2" Visibility="Collapsed" Height="46" Grid.RowSpan="2" VerticalAlignment="Top" Click="ModifierOui_Click" >Appliquer</Button>
                         <TextBox x:Name="NomEcri" Grid.Column="0" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" >Nom :</TextBox>
                         <TextBox x:Name="PrenomEcri" Grid.Column="0" Grid.Row="1" Background="#00BDFF " Visibility="Collapsed" >Prenom :</TextBox>
                         <TextBox x:Name="AgeEcri" Grid.Column="0" Grid.Row="2" Background="#00FF93 " Visibility="Collapsed" >Age :</TextBox>
-
+                        <TextBox x:Name="Erreur" Grid.Row="3" Grid.Column="1" Background="RED" Visibility="Collapsed"></TextBox>
                         <TextBox x:Name="NomGenre" Grid.Column="0" Grid.Row="0" Background="#00BDFF " Visibility="Collapsed" >Genre :</TextBox>
 
                     </Grid>
